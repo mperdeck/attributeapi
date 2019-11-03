@@ -15,12 +15,10 @@ namespace Api.ControllerBases
         where VM: class
     {
         private readonly IAttributeService<T> _attributeService;
-        private readonly IMapper _mapper; // automapper
 
-        public AttributeBaseController(IAttributeService<T> attributeService, IMapper mapper)
+        public AttributeBaseController(IAttributeService<T> attributeService)
         {
             _attributeService = attributeService;
-            _mapper = mapper;
         }
 
         [HttpGet]
@@ -44,9 +42,9 @@ namespace Api.ControllerBases
         /// <param name="viewModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult Post(VM viewModel)
+        public IActionResult Post([FromBody] VM viewModel)
         {
-            var data = _mapper.Map<VM, T>(viewModel);
+            var data = Mapper.Map<VM, T>(viewModel);
             _attributeService.Add(data);
 
             // Exception handling goes here - leading to 500 (if Exception) or BadRequest (if ApplicationException)
@@ -60,9 +58,9 @@ namespace Api.ControllerBases
         /// <param name="viewModelData"></param>
         /// <returns></returns>
         [HttpPut]
-        public IActionResult Put(VM viewModel)
+        public IActionResult Put([FromBody] VM viewModel)
         {
-            var data = _mapper.Map<VM, T>(viewModel);
+            var data = Mapper.Map<VM, T>(viewModel);
             _attributeService.Update(data);
 
             // Exception handling goes here - leading to 500 (if Exception) or BadRequest (if ApplicationException)

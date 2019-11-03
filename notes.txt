@@ -1,3 +1,15 @@
-Get http://localhost:50806/api/SimpleAttr/2ee11fdf-f039-4e31-b193-1a877314e690
+Get 
+Delete
+http://localhost:50806/api/SimpleAttr/2ee11fdf-f039-4e31-b193-1a877314e690
 
+--------------------------------------------------------------------------------------
 
+POST 
+PUT
+http://localhost:50806/api/SimpleAttr
+
+{
+    "externalId": "00000000-0000-0000-0000-000000000000",
+    "name": "My attribute",
+    "simpleExtra": "extra data"
+}

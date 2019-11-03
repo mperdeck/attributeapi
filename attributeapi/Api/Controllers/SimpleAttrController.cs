@@ -12,11 +12,11 @@ using Services;
 
 namespace Api.Controllers
 {
-    [Route("api/[controller]/{id}")]
+    [Route("api/[controller]/{id?}")]
     [ApiController]
     public class SimpleAttrController : AttributeBaseController<SimpleAttr, SimpleAttrViewModel>
     {
-        public SimpleAttrController(IAttributeService<SimpleAttr> attributeService, IMapper mapper) : base(attributeService, mapper)
+        public SimpleAttrController(IAttributeService<SimpleAttr> attributeService) : base(attributeService)
         { }
     }
 }
