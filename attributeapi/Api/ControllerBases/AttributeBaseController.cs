@@ -10,6 +10,8 @@ using AutoMapper;
 
 namespace Api.ControllerBases
 {
+    [Route("api/[controller]/{id?}")]
+    [ApiController]
     public class AttributeBaseController<T, VM> : Controller
         where T: class
         where VM: class
