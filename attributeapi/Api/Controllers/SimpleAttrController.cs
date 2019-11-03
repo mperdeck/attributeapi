@@ -12,7 +12,7 @@ using Services;
 
 namespace Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/{id}")]
     [ApiController]
     public class SimpleAttrController : AttributeBaseController<SimpleAttr, SimpleAttrViewModel>
     {

@@ -6,11 +6,11 @@ namespace Services
     /// Super basic CRUD service, direct to database
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Service<T> : IService<T> where T : class
+    public class Service<T> : IService<T> where T : class, new()
     {
         public T Get(Guid externalId)
         {
-            return null;
+            return new T();
         }
 
         public void Add(T data)

@@ -23,16 +23,18 @@ namespace Api.ControllerBases
             _mapper = mapper;
         }
 
-        public IActionResult Get(Guid externalId)
+        [HttpGet]
+        public IActionResult Get(Guid id)
         {
-            var data = _attributeService.Get(externalId);
-            var viewData = _mapper.Map<T>(data);
+            var data = _attributeService.Get(id);
+            var viewData = _mapper.Map<T, VM>(data);
             return Ok(viewData);
         }
 
-        public IActionResult Delete(Guid externalId)
+        [HttpDelete]
+        public IActionResult Delete(Guid id)
         {
-            _attributeService.Delete(externalId);
+            _attributeService.Delete(id);
             return Ok();
         }
 
@@ -41,9 +43,10 @@ namespace Api.ControllerBases
         /// </summary>
         /// <param name="viewModel"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult Post(VM viewModel)
         {
-            var data = _mapper.Map<T>(viewModel);
+            var data = _mapper.Map<VM, T>(viewModel);
             _attributeService.Add(data);
 
             // Exception handling goes here - leading to 500 (if Exception) or BadRequest (if ApplicationException)
@@ -56,9 +59,10 @@ namespace Api.ControllerBases
         /// </summary>
         /// <param name="viewModelData"></param>
         /// <returns></returns>
+        [HttpPut]
         public IActionResult Put(VM viewModel)
         {
-            var data = _mapper.Map<T>(viewModel);
+            var data = _mapper.Map<VM, T>(viewModel);
             _attributeService.Update(data);
 
             // Exception handling goes here - leading to 500 (if Exception) or BadRequest (if ApplicationException)

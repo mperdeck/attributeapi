@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Services
 {
-    public class AttributeService<T>: Service<T>, IAttributeService<T> where T : class
+    public class AttributeService<T>: Service<T>, IAttributeService<T> where T : class, new()
     {
     }
 }

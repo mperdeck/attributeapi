@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Services;
 
 namespace Api
 {
@@ -39,6 +40,10 @@ namespace Api
             // Also registers IMapper, so the mapper can be dependency injected.
             // See https://medium.com/ps-its-huuti/how-to-get-started-with-automapper-and-asp-net-core-2-ecac60ef523f
             services.AddAutoMapper();
+
+            // Add generic IAttributeService to the DI container
+            // See https://stackoverflow.com/questions/49352434/how-to-register-interface-with-generic-type-in-startup-cs
+            services.AddTransient(typeof(IAttributeService<>), typeof(AttributeService<>));
 
             // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
