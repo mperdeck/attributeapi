@@ -27,7 +27,7 @@ namespace Api.ControllerBases
         public IActionResult Get(Guid id)
         {
             var data = _attributeService.Get(id);
-            var viewData = _mapper.Map<T, VM>(data);
+            var viewData = Mapper.Map<T, VM>(data);
             return Ok(viewData);
         }
 

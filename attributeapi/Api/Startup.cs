@@ -45,6 +45,9 @@ namespace Api
             // See https://stackoverflow.com/questions/49352434/how-to-register-interface-with-generic-type-in-startup-cs
             services.AddTransient(typeof(IAttributeService<>), typeof(AttributeService<>));
 
+            // Configure automapper (same way as in Decideware code base)
+            ConfigureAutoMapper();
+
             // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -70,6 +73,14 @@ namespace Api
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+        }
+
+        public void ConfigureAutoMapper()
+        {
+            Mapper.Initialize(x =>
+            {
+                Api.AutomapperProfiles.AutoMapperConfiguration.ConfigAction.Invoke(x);
             });
         }
     }
