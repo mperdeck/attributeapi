@@ -9,6 +9,7 @@ namespace Data
     public class SimpleAttr
     {
         public int Id { get; set; }
+        public Guid ExternalId { get; set; }
         public string Name { get; set; }
         public string SimpleExtra { get; set; }
     }

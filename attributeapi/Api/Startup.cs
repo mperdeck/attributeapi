@@ -36,6 +36,7 @@ namespace Api
 
             // Find all automapper profiles in this assembly and configure them.
             // Requires package reference to AutoMapper.Extensions.Microsoft.DependencyInjection
+            // Also registers IMapper, so the mapper can be dependency injected.
             // See https://medium.com/ps-its-huuti/how-to-get-started-with-automapper-and-asp-net-core-2-ecac60ef523f
             services.AddAutoMapper();
 
