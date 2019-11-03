@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,12 +14,12 @@ namespace Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
 
-        public IConfiguration Configuration { get; }
+        //public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,6 +31,15 @@ namespace Api
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            // New
+
+            // Find all automapper profiles in this assembly and configure them.
+            // Requires package reference to AutoMapper.Extensions.Microsoft.DependencyInjection
+            // See https://medium.com/ps-its-huuti/how-to-get-started-with-automapper-and-asp-net-core-2-ecac60ef523f
+            services.AddAutoMapper();
+
+            // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
